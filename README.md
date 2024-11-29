@@ -1,11 +1,11 @@
 # Titolo della Tua Applicazione
 
 ## Descrizione
-Breve descrizione dell'applicazione e del suo scopo.
+Script python grafico, che permette un calcolo del voto di laurea previsto in base a dei parametri descritti dal dipartimento DIETI dell' Università degli studi di Napoli "Federico II"
 
 ## Prerequisiti
 - Python 3.x
-- Tkinter (solitamente incluso con l'installazione standard di Python)
+- Tkinter
 
 ## Installazione ed avvio
 
