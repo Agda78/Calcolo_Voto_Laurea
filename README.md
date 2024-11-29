@@ -11,8 +11,8 @@ Script python grafico, che permette un calcolo del voto di laurea previsto in ba
 
 ### 
 ```bash
-git clone https://github.com/tuonome/nome-repository.git
-cd nome-repository
+git clone https://github.com/Agda78/calcolo_voto_n46.git
+cd calcolo_voto_n46
 ```
 # Assicurarsi di aver installato tkinter
 ###
