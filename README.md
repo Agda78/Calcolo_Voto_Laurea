@@ -17,7 +17,7 @@ cd nome-repository
 # Assicurarsi di aver installato tkinter
 ###
 ```bash
-pip install tkinter
+pip install tk
 ```
 
 # Avvio dello script
