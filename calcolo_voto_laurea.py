@@ -155,7 +155,7 @@ class GraduationScoreCalculator:
             media_ponderata_110 = round(media_ponderata_110, 3)
 
             bonus_100 = 1 if media_ponderata_110 >= 100 else 0
-            bonus_lodi = (numero_lodi_9 * 9) + numero_lodi_6 * 6
+            bonus_lodi = (numero_lodi_9 * 9) + (numero_lodi_6 * 6)
             bonus_lodi = bonus_lodi / 180
             bonus_lodi = bonus_lodi * (11 / 3)
             bonus_lodi = round(bonus_lodi, 1)
