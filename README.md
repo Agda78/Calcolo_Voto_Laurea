@@ -14,17 +14,17 @@ Script python grafico, che permette un calcolo del voto di laurea previsto in ba
 git clone https://github.com/Agda78/calcolo_voto_n46.git
 cd calcolo_voto_n46
 ```
-# Assicurarsi di aver installato tkinter
-###
-```bash
-pip install tk
-```
-
 # Avvio dello script
 ```bash
 python ./calcolo_voto_laurea.py
 ```
-or
+o
 ```bash
 python3 ./calcolo_voto_laurea.py
+```
+# Assicurarsi di aver installato tkinter
+Nel caso l'avvio diretto desse problemi, provare ad installare la libreria tkinter con il comando seguente
+###
+```bash
+pip install tk
 ```
