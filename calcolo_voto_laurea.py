@@ -24,12 +24,11 @@ class GraduationScoreCalculator:
         self.numero_lodi_6_var = tk.StringVar()
         self.numero_lodi_12_var = tk.StringVar()
         self.anni_fuoricorso_var = tk.StringVar()
-        self.voto_triennale = tk.StringVar()
 
         self.media_ponderata_110_var = tk.StringVar(value="0")
+        self.media_aggiustata = tk.StringVar(value="0")
         self.bonus_lodi_var = tk.StringVar(value="0")
         self.bonus_anni_var = tk.StringVar(value="0")
-        self.bonus_triennale = tk.StringVar(value="0")
         self.bonus_100 = tk.StringVar(value="0")
         self.voto_finale_var = tk.StringVar(value="0")
 
@@ -70,12 +69,22 @@ class GraduationScoreCalculator:
         )
         magistrale_button.pack(pady=10)
 
+    def reset_output_variables(self):
+        # Inizializza tutte le variabili di output a 0 o valori predefiniti
+        self.media_ponderata_110_var.set("0")
+        self.media_aggiustata.set("0")
+        self.bonus_lodi_var.set("0")
+        self.bonus_anni_var.set("0")
+        self.bonus_100.set("0")
+        self.voto_finale_var.set("0")
+
     def setup_calculator(self, is_m63):
         # Configurazione dell'interfaccia in base al tipo di matricola
         self.is_m63.set(is_m63)
         for widget in self.root.winfo_children():
             widget.destroy()
 
+        self.reset_output_variables()  # Inizializza le variabili di output
         self.create_calculator_ui()
 
     def create_calculator_ui(self):
@@ -127,10 +136,10 @@ class GraduationScoreCalculator:
 
         if self.is_m63.get():
             input_fields.append(("Numero lodi 12 cfu:", self.numero_lodi_12_var))
-            input_fields.append(("Voto triennale (110L = 111):", self.voto_triennale))
-        else:
-            input_fields.append(("Anni fuoricorso:", self.anni_fuoricorso_var))
+            
+        input_fields.append(("Anni fuoricorso:", self.anni_fuoricorso_var))
 
+            
         for label_text, var in input_fields:
             row_frame = tk.Frame(main_frame, bg=bg_color)
             row_frame.pack(fill='x', pady=5)
@@ -152,15 +161,16 @@ class GraduationScoreCalculator:
 
         output_fields = [
             ("Media ponderata su 110:", self.media_ponderata_110_var),
-            ("Bonus Lodi:", self.bonus_lodi_var)
         ]
 
-        if self.is_m63.get():
-            output_fields.append(("Bonus Triennale:", self.bonus_triennale))
-        else:
-            output_fields.append(("Bonus Anni Svolti:", self.bonus_anni_var))
+        output_fields.append(("Bonus Anni Svolti:", self.bonus_anni_var))
+        
+        if not(self.is_m63.get()):
+            output_fields.append(("Bonus Lodi:", self.bonus_lodi_var))
             output_fields.append(("Bonus > 100:", self.bonus_100))
-
+        else :
+            output_fields.append(("Media Aggiustata su 110:", self.media_aggiustata))
+        
         output_fields.append(("Voto finale:", self.voto_finale_var))
 
         for label_text, var in output_fields:
@@ -193,12 +203,14 @@ class GraduationScoreCalculator:
 
     def return_to_selection(self):
         # Resetta i campi di input
+        self.media_aggiustata.set("")
+        self.media_ponderata_110_var.set("")
+        self.voto_finale_var.set("")
         self.media_ponderata_var.set("")
         self.numero_lodi_9_var.set("")
         self.numero_lodi_6_var.set("")
         self.numero_lodi_12_var.set("")
         self.anni_fuoricorso_var.set("")
-        self.voto_triennale.set("")
 
         # Ritorna alla schermata di selezione
         for widget in self.root.winfo_children():
@@ -213,26 +225,47 @@ class GraduationScoreCalculator:
             media_ponderata_30 = float(self.media_ponderata_var.get() or 0)
             numero_lodi_9 = int(self.numero_lodi_9_var.get() or 0)
             numero_lodi_6 = int(self.numero_lodi_6_var.get() or 0)
+            anni_fuoricorso = int(self.anni_fuoricorso_var.get() or -1)
+
             media_ponderata_110 = media_ponderata_30 * (11 / 3)
+
+            self.media_ponderata_110_var.set(round(media_ponderata_110, 3))
 
             if self.is_m63.get():
                 numero_lodi_12 = int(self.numero_lodi_12_var.get() or 0)
-                voto_triennale = int(self.voto_triennale.get() or 0)
-                bonus_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6 + numero_lodi_12 * 12) / 120) * (11 / 3)
-                bonus_triennale = max((voto_triennale - 100 + 1) * 0.25, 0)
-                voto_finale = media_ponderata_110 + bonus_lodi + bonus_triennale
-                self.bonus_triennale.set(round(bonus_triennale, 3))
+                
+                aggiustamento_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6 + numero_lodi_12 * 12) / 120) 
+                
+                media_ponderata_30 = media_ponderata_30 + aggiustamento_lodi
+                media_aggiustata = (media_ponderata_30 * 4) - 10
+
+
+                bonus_fuoricorso = 0
+                if anni_fuoricorso < 0:
+                    bonus_fuoricorso = 0
+                elif anni_fuoricorso <= 1:
+                    bonus_fuoricorso = 4
+                elif anni_fuoricorso <= 2:
+                    bonus_fuoricorso = 2.5
+                elif anni_fuoricorso <= 3:
+                    bonus_fuoricorso = 1
+
+                self.media_aggiustata.set(media_aggiustata)
+                self.bonus_anni_var.set(bonus_fuoricorso)
+                
+                voto_finale = media_aggiustata + bonus_fuoricorso
+                
             else:
-                anni_fuoricorso = int(self.anni_fuoricorso_var.get() or -1)
                 bonus_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6) / 180) * (11 / 3)
                 bonus_anni = max(4 - anni_fuoricorso, 0)
                 bonus_100_var = 1 if media_ponderata_110 >= 100 else 0
                 voto_finale = media_ponderata_110 + bonus_lodi + bonus_anni + bonus_100_var
                 self.bonus_100.set(bonus_100_var)
                 self.bonus_anni_var.set(round(bonus_anni, 3))
+                self.bonus_lodi_var.set(round(bonus_lodi, 3))
 
-            self.media_ponderata_110_var.set(round(media_ponderata_110, 3))
-            self.bonus_lodi_var.set(round(bonus_lodi, 3))
+            
+            
             self.voto_finale_var.set(round(voto_finale, 3))
         except ValueError:
             event.widget.delete(0, 'end')
