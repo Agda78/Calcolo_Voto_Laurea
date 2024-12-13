@@ -1,7 +1,7 @@
-# Calcolatore Voto Laurea N46
+# Calcolatore Voto Laurea
 
 ## Descrizione
-Script python grafico, che permette un calcolo del voto di laurea previsto in base a dei parametri descritti dal dipartimento DIETI dell' Università degli studi di Napoli "Federico II"
+Script python grafico, che permette un calcolo del voto di laurea previsto (sia Triennale che Magistrale) in base ai parametri descritti dal dipartimento DIETI dell' Università degli studi di Napoli "Federico II"
 
 ## Prerequisiti
 - Python 3.x
