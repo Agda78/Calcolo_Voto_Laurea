@@ -32,5 +32,6 @@ pip install tk
 Una volta scaricato lo script, aprirlo e modificare le variabili:
 - num_cfu_triennale
 - num_cfu_magistrale
-//
+
+
 In base al piano di studi intrapreso (numero di cfu totali conseguiti)
