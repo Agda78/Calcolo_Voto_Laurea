@@ -269,7 +269,12 @@ class GraduationScoreCalculator:
                 
             else:
                 bonus_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6) / num_cfu_triennale) * (11 / 3)
-                bonus_anni = max(4 - anni_fuoricorso, 0)
+                
+                if anni_fuoricorso < 0:
+                    bonus_anni = 0
+                else:
+                    bonus_anni = max(4 - anni_fuoricorso, 0)
+                
                 bonus_100_var = 1 if media_ponderata_110 >= 100 else 0
                 voto_finale = media_ponderata_110 + bonus_lodi + bonus_anni + bonus_100_var
                 self.bonus_100.set(bonus_100_var)
