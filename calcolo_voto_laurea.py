@@ -120,7 +120,7 @@ class GraduationScoreCalculator:
         if self.is_m63.get():
             warning_label = tk.Label(
                 main_frame,
-                text="⚠️ ATTENZIONE ⚠️: Ricorda che al punteggio va aggiunta la valutazione della commissione (0-5 punti)",
+                text="⚠️ ATTENZIONE ⚠️: Ricorda che al punteggio va aggiunta la valutazione della commissione (0-4 punti)",
                 font=('Arial', 14, 'bold'),
                 bg=bg_color,
                 fg='red',
@@ -283,7 +283,7 @@ class GraduationScoreCalculator:
 
             
             
-            self.voto_finale_var.set(round(voto_finale, 3))
+            self.voto_finale_var.set(round(voto_finale, 4))
         except ValueError:
             event.widget.delete(0, 'end')
             messagebox.showerror("Errore", "Inserisci valori numerici validi")
