@@ -28,3 +28,7 @@ Nel caso l'avvio diretto desse problemi, provare ad installare la libreria tkint
 ```bash
 pip install tk
 ```
+## Per piani di studi con cfu diversi dallo standard
+Una volta scaricato lo script, aprirlo e modificare le variabili:
+- num_cfu_triennale
+- num_cfu_magistrale

@@ -2,6 +2,18 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 
+# Variabili inter-sistema
+# Tali variabili sono riferite allo standard e vanno cambiate
+# in base al piano di studi intrapreso (potrebbero mostrare dei cfu in più in base agli esami scelti)
+num_cfu_triennale = 180
+num_cfu_magistrale = 120
+
+# Per la laurea magistrale
+# Valori definiti nella normativa
+a = 4
+b = 10
+
+
 class GraduationScoreCalculator:
     def __init__(self):
         # Inizializzazione finestra
@@ -234,10 +246,10 @@ class GraduationScoreCalculator:
             if self.is_m63.get():
                 numero_lodi_12 = int(self.numero_lodi_12_var.get() or 0)
                 
-                aggiustamento_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6 + numero_lodi_12 * 12) / 120) 
+                aggiustamento_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6 + numero_lodi_12 * 12) / num_cfu_magistrale) 
                 
                 media_ponderata_30 = media_ponderata_30 + aggiustamento_lodi
-                media_aggiustata = (media_ponderata_30 * 4) - 10
+                media_aggiustata = (media_ponderata_30 * a) - b
 
 
                 bonus_fuoricorso = 0
@@ -256,7 +268,7 @@ class GraduationScoreCalculator:
                 voto_finale = media_aggiustata + bonus_fuoricorso
                 
             else:
-                bonus_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6) / 180) * (11 / 3)
+                bonus_lodi = ((numero_lodi_9 * 9 + numero_lodi_6 * 6) / num_cfu_triennale) * (11 / 3)
                 bonus_anni = max(4 - anni_fuoricorso, 0)
                 bonus_100_var = 1 if media_ponderata_110 >= 100 else 0
                 voto_finale = media_ponderata_110 + bonus_lodi + bonus_anni + bonus_100_var
