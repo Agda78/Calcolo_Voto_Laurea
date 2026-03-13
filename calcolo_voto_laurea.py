@@ -13,7 +13,6 @@ num_cfu_magistrale = 120
 a = 4
 b = 10
 
-
 class GraduationScoreCalculator:
     def __init__(self):
         # Inizializzazione finestra
