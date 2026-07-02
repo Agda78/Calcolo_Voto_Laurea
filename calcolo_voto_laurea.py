@@ -6,7 +6,7 @@ from tkinter import messagebox
 # Tali variabili sono riferite allo standard e vanno cambiate
 # in base al piano di studi intrapreso (potrebbero mostrare dei cfu in più in base agli esami scelti)
 num_cfu_triennale = 180
-num_cfu_magistrale = 120
+num_cfu_magistrale = 123
 
 # Per la laurea magistrale
 # Valori definiti nella normativa
@@ -254,11 +254,11 @@ class GraduationScoreCalculator:
                 bonus_fuoricorso = 0
                 if anni_fuoricorso < 0:
                     bonus_fuoricorso = 0
-                elif anni_fuoricorso <= 1:
+                elif anni_fuoricorso < 1:
                     bonus_fuoricorso = 4
-                elif anni_fuoricorso <= 2:
+                elif anni_fuoricorso <= 1:
                     bonus_fuoricorso = 2.5
-                elif anni_fuoricorso <= 3:
+                elif anni_fuoricorso <= 2:
                     bonus_fuoricorso = 1
 
                 self.media_aggiustata.set(media_aggiustata)
