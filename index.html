@@ -11,6 +11,22 @@
 </head>
 <body>
 
+<!-- Pulsante e pannello per impostare i CFU del proprio piano di studi -->
+<button id="btn-settings" class="settings-toggle" title="Impostazioni CFU" aria-label="Apri impostazioni CFU">⚙️</button>
+
+<div id="settings-panel" class="settings-panel hidden">
+  <h2>Impostazioni CFU</h2>
+  <div class="form-group">
+    <label for="cfu-triennale">CFU Triennale:</label>
+    <input type="number" id="cfu-triennale" min="1" value="180">
+  </div>
+  <div class="form-group">
+    <label for="cfu-magistrale">CFU Magistrale:</label>
+    <input type="number" id="cfu-magistrale" min="1" value="123">
+  </div>
+  <button id="btn-close-settings" class="secondary">Chiudi</button>
+</div>
+
 <div class="card">
   <!-- Schermata di selezione -->
   <div id="selection-view">

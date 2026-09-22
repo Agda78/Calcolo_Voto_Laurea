@@ -2,10 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Variabili di stato e costanti
     let isM63 = false;
-    const numCfuTriennale = 180;
-    const numCfuMagistrale = 123;
     const a = 4;
     const b = 10;
+
+    // Valori di default dei CFU, sovrascrivibili dall'utente tramite il pannello impostazioni
+    const DEFAULT_CFU_TRIENNALE = 180;
+    const DEFAULT_CFU_MAGISTRALE = 123;
+    let numCfuTriennale = DEFAULT_CFU_TRIENNALE;
+    let numCfuMagistrale = DEFAULT_CFU_MAGISTRALE;
 
     // Riferimenti agli elementi della UI (Viste e Testi)
     const selectionView = document.getElementById('selection-view');
@@ -13,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcTitle = document.getElementById('calc-title');
     const calcWarning = document.getElementById('calc-warning');
     const groupLodi12 = document.getElementById('group-lodi-12');
+
+    // Riferimenti al pannello impostazioni CFU
+    const btnSettings = document.getElementById('btn-settings');
+    const settingsPanel = document.getElementById('settings-panel');
+    const btnCloseSettings = document.getElementById('btn-close-settings');
+    const inputCfuTriennale = document.getElementById('cfu-triennale');
+    const inputCfuMagistrale = document.getElementById('cfu-magistrale');
 
     // Riferimenti agli elementi della UI (Righe risultati dinamiche)
     const rowMediaAgg = document.getElementById('row-media-agg');
@@ -44,6 +55,41 @@ document.addEventListener('DOMContentLoaded', () => {
     inputs.forEach(input => {
         input.addEventListener('input', calculate);
     });
+
+    // Apertura/chiusura del pannello impostazioni CFU
+    btnSettings.addEventListener('click', () => {
+        settingsPanel.classList.toggle('hidden');
+    });
+    btnCloseSettings.addEventListener('click', () => {
+        settingsPanel.classList.add('hidden');
+    });
+
+    // Aggiornamento dei CFU personalizzati (con salvataggio e ricalcolo immediato)
+    inputCfuTriennale.addEventListener('input', () => {
+        numCfuTriennale = parseInt(inputCfuTriennale.value) || DEFAULT_CFU_TRIENNALE;
+        localStorage.setItem('cfuTriennale', numCfuTriennale);
+        calculate();
+    });
+    inputCfuMagistrale.addEventListener('input', () => {
+        numCfuMagistrale = parseInt(inputCfuMagistrale.value) || DEFAULT_CFU_MAGISTRALE;
+        localStorage.setItem('cfuMagistrale', numCfuMagistrale);
+        calculate();
+    });
+
+    // Al caricamento della pagina, recupero eventuali CFU personalizzati salvati in precedenza
+    (function initCfuSettings() {
+        const savedTriennale = localStorage.getItem('cfuTriennale');
+        const savedMagistrale = localStorage.getItem('cfuMagistrale');
+
+        if (savedTriennale) {
+            numCfuTriennale = parseInt(savedTriennale) || DEFAULT_CFU_TRIENNALE;
+            inputCfuTriennale.value = numCfuTriennale;
+        }
+        if (savedMagistrale) {
+            numCfuMagistrale = parseInt(savedMagistrale) || DEFAULT_CFU_MAGISTRALE;
+            inputCfuMagistrale.value = numCfuMagistrale;
+        }
+    })();
 
     // Funzione per impostare il tipo di laurea
     function setDegree(isMagistrale) {
