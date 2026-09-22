@@ -14,7 +14,10 @@ Basta clonare la repo con il comando:
 git clone https://github.com/Agda78/Calcolo_Voto_Laurea.git
 ```
 
-Poi è possibile aprire la pagina html `index.html` che permetterà di accedere al calcolatore in modo offline mediante l'interfaccia web
+Poi è possibile aprire la pagina html `index.html` che permetterà di accedere al calcolatore in modo offline mediante l'interfaccia web.
+
+[!NOTE]
+>Nel caso in cui si dovesse modificare il numero di CFU per via di un piano di studi differente, allora premere sulla rotellina in alto a sinistra per poter modificare il numero di CFU utilizzato all'interno del calcolo
 
 
 ## Opzione Python
