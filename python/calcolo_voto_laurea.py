@@ -6,7 +6,7 @@ from tkinter import messagebox
 # Tali variabili sono riferite allo standard e vanno cambiate
 # in base al piano di studi intrapreso (potrebbero mostrare dei cfu in più in base agli esami scelti)
 num_cfu_triennale = 180
-num_cfu_magistrale = 123
+num_cfu_magistrale = 120
 
 # Per la laurea magistrale
 # Valori definiti nella normativa

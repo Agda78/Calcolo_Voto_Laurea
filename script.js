@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Valori di default dei CFU, sovrascrivibili dall'utente tramite il pannello impostazioni
     const DEFAULT_CFU_TRIENNALE = 180;
-    const DEFAULT_CFU_MAGISTRALE = 123;
+    const DEFAULT_CFU_MAGISTRALE = 120;
     let numCfuTriennale = DEFAULT_CFU_TRIENNALE;
     let numCfuMagistrale = DEFAULT_CFU_MAGISTRALE;
 
