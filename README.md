@@ -1,34 +1,55 @@
 # Calcolatore Voto Laurea
+## Opzione Web
 
-## Descrizione
+### Online
+Sì può accedere al calcolatore mediante il link:
+```link
+https://agda78.github.io/Calcolo_Voto_Laurea/
+```
+Oppure cliccango [qui]([https://agda78.github.io/Calcolo_Voto_Laurea/])
+
+### Offline
+Basta clonare la repo con il comando:
+```bash
+git clone https://github.com/Agda78/Calcolo_Voto_Laurea.git
+```
+
+Poi è possibile aprire la pagina html `index.html` che permetterà di accedere al calcolatore in modo offline mediante l'interfaccia web
+
+
+## Opzione Python
+Nella cartella python è possibile trovare il file calcolo_voto_laurea che si sta cercando e si può proseguire con le linee guida seguenti
+
+### Descrizione
 Script python grafico, che permette un calcolo del voto di laurea previsto (sia Triennale che Magistrale) in base ai parametri descritti dal dipartimento DIETI dell' Università degli studi di Napoli "Federico II"
 
-## Prerequisiti
+### Prerequisiti
 - Python 3.x
 - Tkinter
 
-## Installazione ed avvio
+### Installazione ed avvio
 
 ### 
 ```bash
-git clone https://github.com/Agda78/calcolo_voto_n46.git
-cd calcolo_voto_n46
+git clone https://github.com/Agda78/Calcolo_Voto_Laurea.git
+cd Calcolo_Voto_Laurea
 ```
-# Avvio dello script
+## Avvio dello script
 ```bash
-python ./calcolo_voto_laurea.py
+python ./python/calcolo_voto_laurea.py
 ```
 o
 ```bash
-python3 ./calcolo_voto_laurea.py
+python3 ./python/calcolo_voto_laurea.py
 ```
-# Assicurarsi di aver installato tkinter
+### Assicurarsi di aver installato tkinter
 Nel caso l'avvio diretto desse problemi, provare ad installare la libreria tkinter con il comando seguente
+
 ###
 ```bash
 pip install tk
 ```
-## Per piani di studi con cfu diversi dallo standard
+### Per piani di studi con cfu diversi dallo standard
 Una volta scaricato lo script, aprirlo e modificare le variabili:
 - num_cfu_triennale
 - num_cfu_magistrale
