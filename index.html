@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolatore Voto Laurea - Federico II</title>
+  
+  <link rel="stylesheet" href="style.css">
+
+  
+</head>
+<body>
+
+<div class="card">
+  <!-- Schermata di selezione -->
+  <div id="selection-view">
+    <h1>Seleziona il tipo di matricola</h1>
+    <div class="btn-group">
+      <button id="btn-triennale">Triennale (N46)</button>
+      <button id="btn-magistrale">Magistrale (M63)</button>
+    </div>
+  </div>
+
+  <!-- Calcolatore -->
+  <div id="calculator-view" class="hidden">
+    <h1 id="calc-title">Calcolatore Voto Laurea</h1>
+    <div id="calc-warning" class="warning"></div>
+
+    <div class="form-group">
+      <label for="media_30">Media ponderata su 30:</label>
+      <input type="number" id="media_30" step="0.01" min="18" max="31" placeholder="es. 27.5">
+    </div>
+    
+    <div class="form-group">
+      <label for="lodi_9">Numero lodi 9 CFU:</label>
+      <input type="number" id="lodi_9" min="0" placeholder="0">
+    </div>
+    
+    <div class="form-group">
+      <label for="lodi_6">Numero lodi 6 CFU:</label>
+      <input type="number" id="lodi_6" min="0" placeholder="0">
+    </div>
+    
+    <div class="form-group" id="group-lodi-12">
+      <label for="lodi_12">Numero lodi 12 CFU:</label>
+      <input type="number" id="lodi_12" min="0" placeholder="0">
+    </div>
+    
+    <div class="form-group">
+      <label for="fuoricorso">Anni fuoricorso:</label>
+      <input type="number" id="fuoricorso" min="0" placeholder="0">
+    </div>
+
+    <div class="outputs">
+      <div class="output-row">
+        <span>Media ponderata su 110:</span>
+        <span class="output-val" id="out-media-110">0</span>
+      </div>
+      <div class="output-row" id="row-media-agg">
+        <span>Media Aggiustata su 110:</span>
+        <span class="output-val" id="out-media-agg">0</span>
+      </div>
+      <div class="output-row" id="row-bonus-lodi">
+        <span>Bonus Lodi:</span>
+        <span class="output-val" id="out-bonus-lodi">0</span>
+      </div>
+      <div class="output-row">
+        <span>Bonus Anni Svolti:</span>
+        <span class="output-val" id="out-bonus-anni">0</span>
+      </div>
+      <div class="output-row" id="row-bonus-100">
+        <span>Bonus > 100:</span>
+        <span class="output-val" id="out-bonus-100">0</span>
+      </div>
+      <div class="output-row final">
+        <span>Voto finale (base):</span>
+        <span class="output-val" id="out-finale">0</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 25px;">
+      <button id="btn-back" class="secondary">← Torna alla Selezione</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

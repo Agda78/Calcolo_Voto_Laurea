@@ -1,0 +1,178 @@
+:root {
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --accent-color: #6a5acd;
+    --accent-hover: #5848c2;
+    --text-color: #e0e0e0;
+    --input-bg: #0f3460;
+    --danger-color: #e94560;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    padding: 20px; 
+}
+
+.card { 
+    background-color: var(--card-bg); 
+    border-radius: 12px; 
+    padding: 30px; 
+    width: 100%; 
+    max-width: 700px; 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4); 
+}
+
+h1 { 
+    color: var(--accent-color); 
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 1.6rem; 
+}
+
+.btn-group { 
+    display: flex; 
+    gap: 15px; 
+    justify-content: center; 
+    margin-bottom: 20px; 
+}
+
+button { 
+    background-color: var(--accent-color); 
+    color: #fff; 
+    border: none; 
+    padding: 10px 18px; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: background 0.2s; 
+    font-size: 0.95rem; 
+}
+
+button:hover { 
+    background-color: var(--accent-hover); 
+}
+
+button.secondary { 
+    background-color: transparent; 
+    border: 1px solid var(--accent-color); 
+    color: var(--text-color); 
+}
+
+button.secondary:hover { 
+    background-color: var(--accent-color); 
+    color: #fff; 
+}
+
+.warning { 
+    color: var(--danger-color); 
+    text-align: center; 
+    font-weight: bold; 
+    margin-bottom: 20px; 
+    font-size: 0.9rem; 
+    padding: 10px; 
+    border: 1px dashed var(--danger-color); 
+    border-radius: 6px; 
+}
+
+.form-group { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; 
+    gap: 10px; 
+}
+
+label { 
+    flex: 1.2; 
+    font-size: 0.95rem; 
+}
+
+input { 
+    flex: 1; 
+    padding: 8px 12px; 
+    border-radius: 6px; 
+    border: 1px solid #334; 
+    background: var(--input-bg); 
+    color: #fff; 
+    font-size: 1rem; 
+}
+
+input:focus { 
+    outline: 2px solid var(--accent-color); 
+}
+
+.outputs { 
+    margin-top: 25px; 
+    border-top: 1px solid #334; 
+    padding-top: 15px; 
+}
+
+.output-row { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 8px; 
+    font-size: 0.95rem; 
+}
+
+.output-val { 
+    font-weight: bold; 
+    color: var(--accent-color); 
+}
+
+.output-row.final { 
+    font-size: 1.2rem; 
+    margin-top: 10px; 
+    padding-top: 10px; 
+    border-top: 1px dashed #334; 
+}
+
+.output-row.final .output-val { 
+    color: #4ecca3; 
+    font-size: 1.3rem; 
+}
+
+.action-footer {
+    text-align: center; 
+    margin-top: 25px;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+
+@media (max-width: 600px) {
+.card {
+    padding: 20px; /* Riduce il padding esterno su schermi piccoli */
+}
+
+.btn-group {
+    flex-direction: column; /* I bottoni di selezione si impilano verticalmente */
+    gap: 10px;
+}
+
+.form-group {
+    flex-direction: column; /* Label e input vanno su due righe separate */
+    align-items: flex-start;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%; /* L'input prende tutto lo spazio disponibile */
+}
+}
