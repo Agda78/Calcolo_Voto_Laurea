@@ -6,7 +6,7 @@ Sì può accedere al calcolatore mediante il link:
 ```link
 https://agda78.github.io/Calcolo_Voto_Laurea/
 ```
-Oppure cliccango [qui](https://agda78.github.io/Calcolo_Voto_Laurea/)
+Oppure cliccando [qui](https://agda78.github.io/Calcolo_Voto_Laurea/)
 
 ### Offline
 Basta clonare la repo con il comando:
